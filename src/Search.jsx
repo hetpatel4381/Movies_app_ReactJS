@@ -10,7 +10,7 @@ const Search = () => {
         <div>
           <input
             type="text"
-            placeholder="search here"
+            placeholder="search movie"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
