@@ -12,19 +12,18 @@ const Movies = () => {
   return (
     <>
       <section className="movie-page">
-        <div className="grid grid-4-col">
-          {movie.map((currMovie, index) => {
+        <div className="container grid grid-4-col">
+          {movie.map((currMovie) => {
+            const {imdbId, Title, Poster} = currMovie;
             return (
-              <div key={index}>
-                <NavLink to={`movie/${currMovie.imdbId}`}>
+                <NavLink to={`movie/${imdbId}`} key={imdbId}>
                   <div className="card">
                     <div className="card-info">
-                      <h2>{currMovie.Title}</h2>
-                      <img src={currMovie.Poster} alt="#" />
+                      <h2>{Title}</h2>
+                      <img src={Poster} alt={imdbId} />
                     </div>
                   </div>
                 </NavLink>
-              </div>
             );
           })}
         </div>
