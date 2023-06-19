@@ -20,7 +20,7 @@ const Movies = () => {
                 <NavLink to={`movie/${imdbID}`} key={imdbID}>
                   <div className="card">
                     <div className="card-info">
-                      <h2>{movieName.length >= 15 ? `${movieName}...` : {movieName}}</h2>
+                      <h2>{movieName.length >= 15 ? `${movieName}...` : movieName}</h2>
                       <img src={Poster} alt={imdbID} />
                     </div>
                   </div>
