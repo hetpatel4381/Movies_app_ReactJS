@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
-const API_URL = `http://www.omdbapi.com/?i=tt3896198&apikey=80cdd94f&s=titanic`;
+const API_URL = `http://www.omdbapi.com/?i=tt3896198&apikey=80cdd94f&s=spiderman`;
 
 const AppContext = React.createContext();
 
@@ -13,9 +13,9 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      if (data.response === "True") {
+      if (data.Response === "True") {
         setIsLoading(false);
-        setMovie(data.search);
+        setMovie(data.Search);
       } else {
         setIsError({
           show: true,
@@ -32,7 +32,7 @@ const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={(isLoading, isError, movie)}>
+    <AppContext.Provider value={{isLoading, isError, movie}}>
       {children}
     </AppContext.Provider>
   );
