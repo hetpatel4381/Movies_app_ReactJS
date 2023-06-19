@@ -12,17 +12,22 @@ const AppProvider = ({ children }) => {
   const [query, setQuery] = useState("titanic");
 
   const getMovies = async (url) => {
+    setIsLoading(true);
     try {
       const response = await fetch(url);
       const data = await response.json();
       console.log(data);
       if (data.Response === "True") {
         setIsLoading(false);
+        setIsError({
+          show: false,
+          msg: "",
+        });
         setMovie(data.Search);
       } else {
         setIsError({
           show: true,
-          msg: data.error,
+          msg: data.Error,
         });
       }
     } catch (error) {
@@ -33,7 +38,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     let timerOut = setTimeout(() => {
       getMovies(`${API_URL}&s=${query}`);
-    }, 800);
+    }, 500);
 
     return () => clearTimeout(timerOut);
   }, [query]);
